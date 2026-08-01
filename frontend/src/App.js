@@ -121,7 +121,7 @@ function App() {
           
           <div className="hero-actions">
             <a href="#projects" className="btn-neon-primary scroll-reveal-target box-bounce">View Projects</a>
-            <a href="AADYA DIXIT RESUME.pdf" download className="btn-neon-secondary scroll-reveal-target box-bounce">Download Resume</a>
+            <a href="AADYA_DIXIT_RESUME.pdf" download className="btn-neon-secondary scroll-reveal-target box-bounce">Download Resume</a>
           </div>
 
           <div className="social-links-row">
