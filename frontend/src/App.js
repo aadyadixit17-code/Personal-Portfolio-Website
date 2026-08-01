@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import './App.css'; 
 
 function App() {
@@ -8,9 +8,13 @@ function App() {
   const [message, setMessage] = useState('');
   const [formStatus, setFormStatus] = useState(''); // 'SUCCESS', 'ERROR', or ''
 
-  // Track entry and hold the audio track safely
+  // Track overlay entry state
   const [hasEntered, setHasEntered] = useState(false);
-  const audioRef = useRef(null);
+
+  // Handle entry button click without audio
+  const handleEnterSpace = () => {
+    setHasEntered(true);
+  };
 
   // LIGHTWEIGHT SCROLL DETECTION ENGINE (0% Lag, Infinite Re-trigger)
   useEffect(() => {
@@ -65,20 +69,6 @@ function App() {
     } catch (error) {
       setFormStatus('ERROR');
     }
-  };
-
-  // Activate the music on click
-  const handleEnterSpace = () => {
-    setHasEntered(true);
-
-    if (!audioRef.current) {
-      audioRef.current = new Audio('/audio.mpeg');
-      audioRef.current.loop = true;
-    }
-
-    audioRef.current.play()
-      .then(() => console.log("Audio playing!"))
-      .catch((err) => console.log("Playback blocked:", err));
   };
 
   return (
@@ -161,14 +151,15 @@ function App() {
       </header>
 
       {/* About Section */}
-              <section id="about" className="content-panel" >
-            <h2 className="section-title scroll-reveal-target heading-bounce">About Me</h2>
+      <section id="about" className="content-panel">
+        <h2 className="section-title scroll-reveal-target heading-bounce">About Me</h2>
         <div className="neon-card-panel scroll-reveal-target box-bounce">
           <p className="panel-text">
             I am a Final Year Engineering Student at IMS Engineering College (IMSEC), Ghaziabad, with a strong passion for technology, innovation, and continuous learning. As a Computer Science enthusiast, I am currently in the early phase of my professional journey, actively exploring and strengthening my skills in software development and modern web technologies.
             I have hands-on experience with HTML, CSS, C, C++, JavaScript, Python, and the MERN Stack, and I enjoy building projects that help me apply theoretical concepts to real-world problems. I am continuously learning new technologies, improving my coding practices, and expanding my understanding of full-stack development.
             <br /><br />
             As an aspiring Software Engineer and Tech Enthusiast, I believe in learning by building. I regularly work on personal and academic projects, contribute to my GitHub repositories, and explore innovative solutions through practical implementation. My interests include web development, emerging technologies, problem-solving, and creating user-focused digital experiences.
+            <br /><br />
             Beyond technical skills, I value teamwork, communication, adaptability, time management, and a growth mindset. I enjoy collaborating with others, sharing ideas, and learning from new challenges. My goal is to keep evolving as a developer, transform ideas into impactful solutions, and contribute meaningfully to the ever-changing world of technology.
             <br /><br />
             Turning curiosity into learning, learning into projects, and projects into real-world impact.
@@ -177,11 +168,10 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="content-panel" >
+      <section id="skills" className="content-panel">
         <h2 className="section-title scroll-reveal-target heading-bounce">Skills & Expertise</h2>
         
         <div className="skills-container-layout" style={{ display: 'flex', flexDirection: 'column', gap: '1rem', maxWidth: '900px' }}>
-          
           {/* Category 1: Technical Core */}
           <div className="skills-branch">
             <h3 style={{ color: '#38bdf8', fontSize: '1.2rem', marginBottom: '1rem', letterSpacing: '1px' }}>💻 TECHNICAL SKILLS</h3>
@@ -222,7 +212,6 @@ function App() {
               <div className="skill-capsule-neon scroll-reveal-target box-bounce">Continuous Learning</div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -231,7 +220,6 @@ function App() {
         <h2 className="section-title scroll-reveal-target heading-bounce">Experience</h2>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-          
           {/* ROLE 1: Full Stack Engineer Intern at Nayoda */}
           <div className="neon-card-panel scroll-reveal-target box-bounce">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '10px', marginBottom: '1.5rem' }}>
@@ -268,8 +256,6 @@ function App() {
 
           {/* ROLE 2: AI in Process Intelligence Virtual Intern */}
           <div className="neon-card-panel scroll-reveal-target box-bounce" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '2rem', alignItems: 'center' }}>
-            
-            {/* Left Column: Certificate Image Display */}
             <div style={{ width: '100%', borderRadius: '8px', overflow: 'hidden', border: '1px solid #a855f7', boxShadow: '0 0 15px rgba(168, 85, 247, 0.2)' }}>
               <img 
                 src="certificate aicte.jpeg" 
@@ -278,25 +264,19 @@ function App() {
               />
             </div>
 
-            {/* Right Column: Experience Details */}
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'left' }}>
-              
-              {/* Badge Label */}
               <span className="degree-tag" style={{ fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px', background: 'rgba(168, 85, 247, 0.2)', color: '#c084fc', border: '1px solid #a855f7', marginBottom: '0.5rem' }}>
                 🎓 Virtual Internship
               </span>
               
-              {/* Main Title */}
               <h3 className="institution-title" style={{ fontSize: '1.4rem', margin: '0 0 4px 0', width: '100%' }}>
                 AI in Process Intelligence Intern
               </h3>
               
-              {/* Institution Headline */}
               <h4 style={{ color: '#38bdf8', fontWeight: '500', fontSize: '1.1rem', margin: '0 0 4px 0', width: '100%' }}>
                 AICTE & EduSkills (Supported by Celonis)
               </h4>
               
-              {/* Fixed Alignment */}
               <p className="timeline-date" style={{ fontWeight: '600', color: '#a855f7', margin: '0 0 4px 0', fontSize: '0.95rem', paddingLeft: '0px' }}>
                 Apr 2026 - Jun 2026
               </p>
@@ -304,21 +284,17 @@ function App() {
                 Grade: "O" (Outstanding)
               </p>
 
-              {/* Description Paragraph */}
               <p className="panel-text" style={{ fontSize: '0.95rem', color: '#94a3b8', marginBottom: '1rem', width: '100%' }}>
                 Completed an intensive 8-week structured program exploring enterprise process mining, optimization logic, and data-driven automation frameworks.
               </p>
 
-              {/* Descriptive Core Bullet Points */}
               <ul style={{ color: '#e2e8f0', paddingLeft: '18px', lineHeight: '1.6', fontSize: '0.95rem', width: '100%', margin: 0 }}>
                 <li style={{ marginBottom: '8px' }}>Dived deep into process mining methodologies to identify system bottlenecks and execute AI-driven application optimization tracks.</li>
                 <li style={{ marginBottom: '8px' }}>Analyzed complex operations workflows to discover execution patterns and build real-world business intelligence structures.</li>
                 <li>Applied advanced logical algorithms to solve simulated organizational obstacles, earning the highest possible performance evaluation grade.</li>
               </ul>
             </div>
-
           </div>
-
         </div>
       </section>
 
@@ -330,14 +306,14 @@ function App() {
           <h4 className="institution-title">IMS Engineering College (IMSEC), Ghaziabad</h4>
           <p className="timeline-date"> Computer Science Undergraduate 2023-2027</p>
         </div> 
-        <br></br>
-         <div className="neon-card-panel scroll-reveal-target box-bounce">
+        <br />
+        <div className="neon-card-panel scroll-reveal-target box-bounce">
           <span className="degree-tag">Senior Secondary (12th)</span>
           <h4 className="institution-title">St. Marys's Christian School, Sahibabad</h4>
           <p className="timeline-date"> Completed senior secondary education through two academic tracks (PCB and PCM), demonstrating interdisciplinary academic preparation and self-driven learning </p>
         </div>
-        <br></br>
-         <div className="neon-card-panel scroll-reveal-target box-bounce">
+        <br />
+        <div className="neon-card-panel scroll-reveal-target box-bounce">
           <span className="degree-tag">Secondary School (10th)</span>
           <h4 className="institution-title">St. Marys's Christian School, Sahibabad</h4>
           <p className="timeline-date">Completed secondary education with a strong foundation in core subjects.</p>
@@ -349,7 +325,6 @@ function App() {
         <h2 className="section-title scroll-reveal-target heading-bounce">Certificates</h2>
         
         <div className="certificates-container-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', width: '100%' }}>
-          
           {/* Certificate 1: IBM */}
           <div className="neon-card-panel spec-padding scroll-reveal-target box-bounce" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <div style={{ width: '100%', borderRadius: '6px', overflow: 'hidden', border: '1px solid rgba(56, 189, 248, 0.3)', marginBottom: '1rem' }}>
@@ -385,7 +360,6 @@ function App() {
               Recognized for representing IMS Engineering College and successfully competing in the "Brain Bytes" technical challenge event during this Inter-Institutional Techno-Cultural Fest.
             </p>
           </div>
-
         </div>
       </section>
 
@@ -394,7 +368,6 @@ function App() {
         <h2 className="section-title scroll-reveal-target heading-bounce">Achievements</h2>
         
         <div className="achievements-container-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', width: '100%' }}>
-          
           {/* Achievement 1: SGU Hackathon 2.0 */}
           <div className="neon-card-panel scroll-reveal-target box-bounce" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             <div>
@@ -422,7 +395,6 @@ function App() {
               </p>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -431,7 +403,6 @@ function App() {
         <h2 className="section-title scroll-reveal-target heading-bounce">Projects</h2>
         
         <div className="showcase-project-container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2.5rem', width: '100%' }}>
-          
           {/* PROJECT 1: Personal Portfolio Website */}
           <div className="neon-card-panel project-detail-hero scroll-reveal-target box-bounce" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
             <div>
@@ -453,7 +424,6 @@ function App() {
               <a href="https://github.com/aadyadixit17-code/Student-Portfolio" target="_blank" rel="noreferrer" className="btn-neon-mini" style={{ padding: '8px 16px', fontSize: '0.85rem' }}>
                 <i className="fab fa-github"></i> GitHub Access
               </a>
-              
             </div>
           </div>
 
@@ -478,10 +448,8 @@ function App() {
               <a href="https://github.com/aadyadixit17-code/Volunteer-Registration-System" target="_blank" rel="noreferrer" className="btn-neon-mini" style={{ padding: '8px 16px', fontSize: '0.85rem' }}>
                 <i className="fab fa-github"></i> Source Code
               </a>
-              
             </div>
           </div>
-
         </div>
       </section>
 
@@ -494,70 +462,47 @@ function App() {
               <label style={{ color: '#38bdf8', fontSize: '0.9rem' }}>Name</label>
               <input 
                 type="text" 
-                name="name"
                 value={name} 
                 onChange={(e) => setName(e.target.value)} 
                 required 
-                style={{ padding: '10px', borderRadius: '4px', border: '1px solid rgba(56, 189, 248, 0.4)', background: 'rgba(15, 23, 42, 0.6)', color: '#fff' }}
+                style={{ padding: '0.6rem', borderRadius: '4px', border: '1px solid #38bdf8', background: 'rgba(0,0,0,0.5)', color: '#fff' }}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', textAlign: 'left' }}>
               <label style={{ color: '#38bdf8', fontSize: '0.9rem' }}>Email</label>
               <input 
                 type="email" 
-                name="email"
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
                 required 
-                style={{ padding: '10px', borderRadius: '4px', border: '1px solid rgba(56, 189, 248, 0.4)', background: 'rgba(15, 23, 42, 0.6)', color: '#fff' }}
+                style={{ padding: '0.6rem', borderRadius: '4px', border: '1px solid #38bdf8', background: 'rgba(0,0,0,0.5)', color: '#fff' }}
               />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', textAlign: 'left' }}>
               <label style={{ color: '#38bdf8', fontSize: '0.9rem' }}>Message</label>
               <textarea 
-                rows="5" 
-                name="message"
                 value={message} 
                 onChange={(e) => setMessage(e.target.value)} 
                 required 
-                style={{ padding: '10px', borderRadius: '4px', border: '1px solid rgba(56, 189, 248, 0.4)', background: 'rgba(15, 23, 42, 0.6)', color: '#fff', resize: 'vertical' }}
+                rows="4" 
+                style={{ padding: '0.6rem', borderRadius: '4px', border: '1px solid #38bdf8', background: 'rgba(0,0,0,0.5)', color: '#fff' }}
               ></textarea>
             </div>
-            <button type="submit" className="btn-neon-primary" style={{ marginTop: '0.5rem', alignSelf: 'flex-start', border: 'none', cursor: 'pointer' }}>
-              Send Message
-            </button>
-
-            {formStatus === 'SUCCESS' && (
-              <p style={{ color: '#22c55e', fontSize: '0.95rem', marginTop: '0.5rem', fontWeight: '500' }}>
-                ✓ Message sent successfully! It has been recorded.
-              </p>
-            )}
-            {formStatus === 'ERROR' && (
-              <p style={{ color: '#ef4444', fontSize: '0.95rem', marginTop: '0.5rem', fontWeight: '500' }}>
-                ✕ Outpost transmission failed. Please try again or reach out directly via email.
-              </p>
-            )}
+            <button type="submit" className="btn-neon-primary">Send Message</button>
+            {formStatus === 'SUCCESS' && <p style={{ color: '#22c55e' }}>Message sent successfully!</p>}
+            {formStatus === 'ERROR' && <p style={{ color: '#ef4444' }}>Something went wrong. Please try again.</p>}
           </form>
         </div>
       </section>
-
       {/* Footer Area */}
       <footer style={{ padding: '2rem', textAlign: 'center', color: '#64748b', fontSize: '0.9rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
         <p>Aadya Dixit <br></br> +91-9315808067</p>
       </footer>
+    
     </div>
+     
+      
   );
 }
 
 export default App;
-
-
-      
-
-      
-
-
-      
-
-
-      
