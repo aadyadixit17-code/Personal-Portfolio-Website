@@ -3,7 +3,7 @@
 Welcome to my personal digital portfolio website! This project is a uniquely styled, highly interactive, fully responsive frontend showcase featuring a dense, twinkling starfield layout and multi-layered performance metrics. 
 
 ## 🚀 Live Preview
-🔗 *Live Link:* https://portfolio-omega-seven-rph8xa3dsm.vercel.app/
+🔗 *Live Link:* https://personalportfolio-phi-one.vercel.app/
 
 ---
 
@@ -33,7 +33,7 @@ To launch this control hub locally, install the necessary dependencies and trigg
 
 ```bash
 # Clone the repository structure
-git clone [https://github.com/aadyadixit17-code/portfolio.git](https://github.com/aadyadixit17-code/portfolio.git)
+git clone [https://github.com/aadyadixit17-code/Personal-Portfolio-Website.git](https://github.com/aadyadixit17-code/Personal-Portfolio-Website.git)
 
 # Step into the frontend working directory
 cd frontend
