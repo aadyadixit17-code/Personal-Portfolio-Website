@@ -171,6 +171,77 @@ body {
   gap: 1.25rem; 
   margin-bottom: 2.5rem; 
 }
+.hero-tagline-capsule {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.08); /* Translucent light grey/white */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Soft border for definition */
+  padding: 8px 16px;
+  border-radius: 50px; /* Makes it a pill/capsule shape */
+  margin: 12px 0 16px 0;
+  backdrop-filter: blur(8px); /* Optional: Gives a nice frosted glass effect */
+}
+
+.hero-tagline-capsule span {
+  color: #e2e8f0; /* Light text color for readability */
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+
+/* Container to keep capsules inline with spacing */
+.hero-badges-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0;
+  align-items: center;
+}
+
+/* Base style for individual capsule badges */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 50px; /* Gives the rounded pill/capsule shape */
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+
+.hero-badge:hover {
+  transform: translateY(-2px);
+}
+
+/* Individual capsule color themes matching dark portfolio UI */
+
+/* 1. Full Stack Development Badge */
+.badge-purple {
+  background: rgba(147, 51, 234, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
+}
+
+/* 2. Azure & DevOps Badge */
+.badge-blue {
+  background: rgba(37, 99, 235, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+}
+
+/* 3. Agentic AI Badge */
+.badge-indigo {
+  background: rgba(79, 70, 229, 0.15);
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.15);
+}
+
 
 .social-links-row { 
   display: flex; 
@@ -324,6 +395,159 @@ body {
 .skill-capsule-neon:hover {
   transform: translateY(-5px) scale(1.04);
   box-shadow: 0 0 20px #a855f7, 0 0 35px rgba(168, 85, 247, 0.5);
+}
+/* Skills Grid Layout */
+/* Update CSS Grid Container */
+.skills-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+  /* PREVENTS ALL CARDS IN A ROW FROM EXPANDING TOGETHER */
+  align-items: start; 
+}
+
+
+.skill-card {
+  background: #12141d;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* ALLOWS INDIVIDUAL CARD HEIGHT TO BE INDEPENDENT */
+  height: fit-content; 
+}
+
+.skill-card:hover {
+  transform: translateY(-2px);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.shape-icon {
+  font-size: 1.4rem;
+}
+
+.expand-arrow-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.expand-arrow-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #ffffff;
+}
+
+.card-summary {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Expandable Panel Animation */
+.card-details-panel {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.25s ease;
+  margin-top: 0;
+}
+
+.card-details-panel.open {
+  max-height: 700px;
+  opacity: 1;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.details-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details-list li {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  margin-bottom: 6px;
+  line-height: 1.45;
+  position: relative;
+  padding-left: 14px;
+}
+
+.details-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: currentColor;
+}
+
+/* Card Accents & Borders */
+.card-purple .shape-icon, .card-purple .card-title { color: #c084fc; }
+.card-purple { border-left: 4px solid #a855f7; }
+
+.card-blue .shape-icon, .card-blue .card-title { color: #60a5fa; }
+.card-blue { border-left: 4px solid #3b82f6; }
+
+.card-amber .shape-icon, .card-amber .card-title { color: #fbbf24; }
+.card-amber { border-left: 4px solid #f59e0b; }
+
+.card-green .shape-icon, .card-green .card-title { color: #34d399; }
+.card-green { border-left: 4px solid #10b981; }
+
+.card-pink .shape-icon, .card-pink .card-title { color: #f472b6; }
+.card-pink { border-left: 4px solid #ec4899; }
+
+.card-teal .shape-icon, .card-teal .card-title { color: #2dd4bf; }
+.card-teal { border-left: 4px solid #14b8a6; }
+
+/* Card 8: Full Stack & Core Software Engineering (Orange Theme) */
+.card-orange .shape-icon, 
+.card-orange .card-title { 
+  color: #fb923c; 
+}
+
+.card-orange { 
+  border-left: 4px solid #f97316; 
+}
+
+.card-orange:hover, 
+.card-orange.expanded { 
+  border-color: rgba(249, 115, 22, 0.5); 
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.15); 
 }
 
 /* Social Icon Actions (LinkedIn, GitHub, Instagram, Email) */
