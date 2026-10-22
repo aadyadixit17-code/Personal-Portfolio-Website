@@ -120,7 +120,7 @@ function App() {
       <header id="home" className="space-hero">
         <div className="hero-left">
           <div className="avatar-glow-ring">
-            <img src="Aadya Dixit.jpeg" alt="Aadya Dixit" className="avatar-content" />
+            <img src="pic.jpeg" alt="Aadya Dixit" className="avatar-content" />
           </div>
           
           <h1 className="hero-title scroll-reveal-target heading-bounce">
