@@ -773,15 +773,13 @@ section:hover .heading-bounce {
   box-shadow: 0 0 25px rgba(168, 85, 247, 0.4) !important;
 }
 
-
 /* ==========================================================================
-   ULTIMATE CONSOLIDATED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
+   CONSOLIDATED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
    ========================================================================== */
 @media screen and (max-width: 768px) {
-  body { outline: 6px solid red !important; }
-  
+
   /* 1. Main layout wrappers */
-  .space-hero, 
+  .space-hero,
   .main-hero-grid,
   .about-grid {
     display: flex !important;
@@ -801,7 +799,7 @@ section:hover .heading-bounce {
   }
 
   /* 3. General cards and panels */
-  .neon-card-panel, 
+  .neon-card-panel,
   .project-card {
     padding: 1.25rem 1rem !important;
     width: 100% !important;
@@ -815,7 +813,7 @@ section:hover .heading-bounce {
     font-size: 2rem !important;
     line-height: 1.2 !important;
   }
-  
+
   h2, .section-heading {
     font-size: 1.6rem !important;
   }
@@ -833,69 +831,91 @@ section:hover .heading-bounce {
     padding: 0.5rem 0.8rem !important;
   }
 
+  /* 6. Navbar: scroll sideways instead of getting cut off */
+  .space-nav {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .space-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .space-nav a,
+  .space-nav li {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
   /* ==========================================================
-     6. EXPERIENCE SECTION & CERTIFICATE MOBILE FIX 
+     7. EXPERIENCE / CERTIFICATE CARDS (stack image on top, text below)
+     These cards have an inline style: display:flex; gap:24px; align-items:center
+     so the rules below use !important and an attribute selector to override it.
      ========================================================== */
-  .experience-card, 
-  .experience-item,
-  [class*="experience-card"] {
-    display: flex !important;
+  #experience .neon-card-panel[style*="display: flex"] {
     flex-direction: column !important;
     align-items: stretch !important;
+    gap: 1rem !important;
     text-align: left !important;
-    width: 100% !important;
-    max-width: 100% !important;
     padding: 1.25rem 1rem !important;
     margin: 0 0 1.5rem 0 !important;
-    box-sizing: border-box !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    border-radius: 12px !important;
     overflow: hidden !important;
   }
 
-  /* Force inner sub-containers/grids to stack vertically so text isn't hidden */
-  .experience-card > div,
-  [class*="experience"] > div {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-  }
-
-  /* Ensure all text elements are fully visible, left-aligned, and spaced */
-  .experience-card h3,
-  .experience-card h4,
-  .experience-card p,
-  .experience-card ul,
-  .experience-card li,
-  [class*="experience"] h3,
-  [class*="experience"] p,
-  [class*="experience"] ul,
-  [class*="experience"] li {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    color: inherit !important;
+  /* Both children (image block and text block) take full width */
+  #experience .neon-card-panel[style*="display: flex"] > * {
+    flex: none !important;
     width: 100% !important;
     max-width: 100% !important;
+    min-width: 0 !important;
     box-sizing: border-box !important;
-    text-align: left !important;
-    margin: 0 0 0.75rem 0 !important;
   }
 
-  /* Force certificate images to fit cleanly without overflowing */
-  section#experience img,
-  .experience-section img,
-  .experience-card img,
-  .experience-certificate-img,
-  [class*="experience"] img {
+  /* Certificate images */
+  #experience .neon-card-panel img {
+    display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 240px !important;
+    max-height: none !important;
     object-fit: contain !important;
-    margin: 1.25rem auto 0 auto !important;
-    display: block !important;
+    margin: 0 auto !important;
     border-radius: 8px !important;
-    box-sizing: border-box !important;
+  }
+
+  /* Text readable and left-aligned */
+  #experience .neon-card-panel h3,
+  #experience .neon-card-panel h4,
+  #experience .neon-card-panel p,
+  #experience .neon-card-panel li {
+    text-align: left !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere;
+  }
+
+  #experience .neon-card-panel h3 {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  #experience .neon-card-panel p,
+  #experience .neon-card-panel li {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+
+  #experience .neon-card-panel ul {
+    padding-left: 1.1rem !important;
+    margin: 0.5rem 0 0 0 !important;
+  }
+
+  #experience .neon-card-panel li {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* 8. Calmer hover/tap on touch screens */
+  .neon-card-panel:hover,
+  .neon-card-panel:active {
+    transform: translateY(-3px) scale(1.005) !important;
   }
 }
