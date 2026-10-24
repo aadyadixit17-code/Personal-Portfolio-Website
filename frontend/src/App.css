@@ -830,28 +830,39 @@ section:hover .heading-bounce {
     font-size: 0.85rem !important;
     padding: 0.5rem 0.8rem !important;
   }
-  /* 6. Fix Experience card layout and certificate images on mobile */
-  .experience-card, 
-  .experience-item,
-  [class*="experience"] {
+/* ==========================================================================
+   FORCE OVERRIDE: Experience Section & Certificate Images on Mobile
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  /* Target the container wrapping the experience card/certificate */
+  .experience-section,
+  .experience-container,
+  div[class*="experience"],
+  section[class*="experience"] {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    text-align: left !important; /* Keep bullet points readable */
     width: 100% !important;
+    max-width: 100% !important;
+    padding: 0.5rem !important;
+    margin: 0 auto !important;
     box-sizing: border-box !important;
-    padding: 1rem !important;
+    overflow: hidden !important;
   }
 
-  /* Force all experience certificate/badge images to scale properly within screen bounds */
-  .experience-card img,
-  .experience-certificate-img,
-  [class*="experience"] img {
+  /* Force every certificate image inside experience to scale cleanly */
+  .experience-section img,
+  .experience-container img,
+  div[class*="experience"] img,
+  section[class*="experience"] img {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
     object-fit: contain !important;
-    margin: 0.5rem auto !important;
     display: block !important;
+    margin: 10px auto !important;
   }
 }
+
+
+  }
