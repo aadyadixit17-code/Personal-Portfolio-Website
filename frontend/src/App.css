@@ -778,6 +778,7 @@ section:hover .heading-bounce {
    ULTIMATE CONSOLIDATED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
    ========================================================================== */
 @media screen and (max-width: 768px) {
+  body { outline: 6px solid red !important; }
   
   /* 1. Main layout wrappers */
   .space-hero, 
