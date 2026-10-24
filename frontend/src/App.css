@@ -773,11 +773,11 @@ section:hover .heading-bounce {
   box-shadow: 0 0 25px rgba(168, 85, 247, 0.4) !important;
 }
 /* ==========================================================================
-   OPTIMIZED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
+   ULTIMATE CONSOLIDATED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
    ========================================================================== */
 @media screen and (max-width: 768px) {
   
-  /* 1. Only target main layout wrappers, NOT every container or grid */
+  /* 1. Main layout wrappers */
   .space-hero, 
   .main-hero-grid,
   .about-grid {
@@ -789,7 +789,7 @@ section:hover .heading-bounce {
     padding: 3rem 1rem 1.5rem 1rem !important;
   }
 
-  /* 2. Fix layout width overflows and horizontal scrolling */
+  /* 2. Global width and overflow control */
   body, html, #root {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -797,9 +797,8 @@ section:hover .heading-bounce {
     padding: 0 !important;
   }
 
-  /* 3. Make cards and panels fit nicely on mobile screens */
+  /* 3. General cards and panels */
   .neon-card-panel, 
-  .experience-card,
   .project-card {
     padding: 1.25rem 1rem !important;
     width: 100% !important;
@@ -808,7 +807,7 @@ section:hover .heading-bounce {
     margin-bottom: 1.5rem !important;
   }
 
-  /* 4. Scale down heavy titles for small mobile viewports */
+  /* 4. Typography adjustments */
   h1, .hero-title {
     font-size: 2rem !important;
     line-height: 1.2 !important;
@@ -818,7 +817,7 @@ section:hover .heading-bounce {
     font-size: 1.6rem !important;
   }
 
-  /* 5. Clean up capsule tags and badges */
+  /* 5. Capsules and badges */
   .hero-tagline-capsule {
     padding: 6px 12px !important;
     font-size: 0.85rem !important;
@@ -830,78 +829,62 @@ section:hover .heading-bounce {
     font-size: 0.85rem !important;
     padding: 0.5rem 0.8rem !important;
   }
-/* ==========================================================================
-   ULTIMATE MOBILE IMAGE & CARD CRUSH (Overrides all other rules)
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-  /* Target any container inside the experience section */
-  section#experience *, 
-  .experience-section *, 
-  [class*="experience"] * {
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
 
-  /* Force every image inside the experience section to fit the mobile screen */
-  section#experience img, 
-  .experience-section img, 
-  [class*="experience"] img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 300px !important; /* Prevents certificate from taking up the whole phone screen */
-    object-fit: contain !important;
-    margin: 10px auto !important;
-    display: block !important;
-  }
-}
-/* ==========================================================================
-   FINAL MOBILE FIX: Experience Card & Certificate Alignment
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-  /* 1. Make sure the entire experience card behaves as a single stacked unit */
+  /* ==========================================================
+     6. EXPERIENCE SECTION & CERTIFICATE ABSOLUTE FIX
+     ========================================================== */
+  section#experience,
+  .experience-section,
   .experience-card, 
   .experience-item,
-  [class*="experience-card"],
-  [class*="experience-item"] {
+  [class*="experience"] {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     text-align: left !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding: 1.25rem 1rem !important;
+    padding: 1rem !important;
     margin: 0 0 1.5rem 0 !important;
     box-sizing: border-box !important;
     background: rgba(255, 255, 255, 0.03) !important;
     border-radius: 12px !important;
+    overflow: hidden !important;
   }
 
-  /* 2. Fix inner text elements so they don't stretch weirdly */
+  /* Ensure text elements inside experience stay contained */
   .experience-card h3,
   .experience-card p,
-  .experience-card ul {
+  .experience-card ul,
+  [class*="experience"] h3,
+  [class*="experience"] p,
+  [class*="experience"] ul {
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
     text-align: left !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
 
-  /* 3. Center and anchor the certificate image neatly right below the text */
+  /* Force certificate images to fit cleanly without overflowing */
+  section#experience img,
+  .experience-section img,
   .experience-card img,
   .experience-certificate-img,
   [class*="experience"] img {
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    max-height: 250px !important;
+    max-height: 240px !important;
     object-fit: contain !important;
     margin: 1rem auto 0 auto !important;
     display: block !important;
     border-radius: 8px !important;
+    box-sizing: border-box !important;
   }
 }
 
 
 
 
- }
