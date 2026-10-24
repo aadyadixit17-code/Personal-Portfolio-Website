@@ -773,56 +773,61 @@ section:hover .heading-bounce {
   box-shadow: 0 0 25px rgba(168, 85, 247, 0.4) !important;
 }
 /* ==========================================================================
-   ULTIMATE MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
+   OPTIMIZED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
    ========================================================================== */
 @media screen and (max-width: 768px) {
   
-  /* 1. Force all dual-columns (like Hero grid) into a single tight column */
+  /* 1. Only target main layout wrappers, NOT every container or grid */
   .space-hero, 
-  .grid-2-col, 
-  [class*="grid"], 
-  [class*="container"] {
+  .main-hero-grid,
+  .about-grid {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
     text-align: center !important;
-    gap: 2rem !important;
-    padding: 4rem 1.2rem 2rem 1.2rem !important;
+    gap: 1.5rem !important;
+    padding: 3rem 1rem 1.5rem 1rem !important;
   }
 
-  /* 2. Fix layout width overflows - stops horizontal scrolling */
+  /* 2. Fix layout width overflows and horizontal scrolling */
   body, html, #root {
     overflow-x: hidden !important;
     width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* 3. Scale down heavy neon card paddings so content fits perfectly */
-  .neon-card-panel {
-    padding: 1.5rem 1rem !important;
+  /* 3. Make cards and panels fit nicely on mobile screens */
+  .neon-card-panel, 
+  .experience-card,
+  .project-card {
+    padding: 1.25rem 1rem !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    margin-bottom: 1.5rem !important;
   }
 
-  /* 4. Make heavy typography readable and crisp on small screens */
-  h1, .hero-title, [class*="title"] {
-    font-size: 2.2rem !important;
+  /* 4. Scale down heavy titles for small mobile viewports */
+  h1, .hero-title {
+    font-size: 2rem !important;
     line-height: 1.2 !important;
   }
   
   h2, .section-heading {
-    font-size: 1.8rem !important;
+    font-size: 1.6rem !important;
   }
 
-  /* 5. Clean up lists and capsules so they stretch properly */
+  /* 5. Clean up capsule tags and badges */
+  .hero-tagline-capsule {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+    text-align: center !important;
+    margin: 10px auto !important;
+  }
+
   .skill-capsule-neon {
-    font-size: 0.9rem !important;
-    padding: 0.6rem 1rem !important;
-  }
-
-  /* 6. Smooth interactive transitions for mobile touch taps */
-  .neon-card-panel:active,
-  .skill-capsule-neon:active {
-    transform: translateY(-5px) scale(1.01) !important;
+    font-size: 0.85rem !important;
+    padding: 0.5rem 0.8rem !important;
   }
 }
