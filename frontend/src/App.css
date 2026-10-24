@@ -772,6 +772,8 @@ section:hover .heading-bounce {
   transform: translateY(-12px) scale(1.02) !important;
   box-shadow: 0 0 25px rgba(168, 85, 247, 0.4) !important;
 }
+
+
 /* ==========================================================================
    ULTIMATE CONSOLIDATED MOBILE & TABLET RESPONSIVE OVERRIDE (MAX-WIDTH: 768px)
    ========================================================================== */
@@ -831,20 +833,18 @@ section:hover .heading-bounce {
   }
 
   /* ==========================================================
-     6. EXPERIENCE SECTION & CERTIFICATE ABSOLUTE FIX
+     6. EXPERIENCE SECTION & CERTIFICATE MOBILE FIX 
      ========================================================== */
-  section#experience,
-  .experience-section,
   .experience-card, 
   .experience-item,
-  [class*="experience"] {
+  [class*="experience-card"] {
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     text-align: left !important;
     width: 100% !important;
     max-width: 100% !important;
-    padding: 1rem !important;
+    padding: 1.25rem 1rem !important;
     margin: 0 0 1.5rem 0 !important;
     box-sizing: border-box !important;
     background: rgba(255, 255, 255, 0.03) !important;
@@ -852,19 +852,33 @@ section:hover .heading-bounce {
     overflow: hidden !important;
   }
 
-  /* Ensure text elements inside experience stay contained */
+  /* Force inner sub-containers/grids to stack vertically so text isn't hidden */
+  .experience-card > div,
+  [class*="experience"] > div {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  /* Ensure all text elements are fully visible, left-aligned, and spaced */
   .experience-card h3,
+  .experience-card h4,
   .experience-card p,
   .experience-card ul,
+  .experience-card li,
   [class*="experience"] h3,
   [class*="experience"] p,
-  [class*="experience"] ul {
+  [class*="experience"] ul,
+  [class*="experience"] li {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: inherit !important;
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
     text-align: left !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 0 0.75rem 0 !important;
   }
 
   /* Force certificate images to fit cleanly without overflowing */
@@ -878,13 +892,9 @@ section:hover .heading-bounce {
     height: auto !important;
     max-height: 240px !important;
     object-fit: contain !important;
-    margin: 1rem auto 0 auto !important;
+    margin: 1.25rem auto 0 auto !important;
     display: block !important;
     border-radius: 8px !important;
     box-sizing: border-box !important;
   }
 }
-
-
-
-
