@@ -830,4 +830,28 @@ section:hover .heading-bounce {
     font-size: 0.85rem !important;
     padding: 0.5rem 0.8rem !important;
   }
+  /* 6. Fix Experience card layout and certificate images on mobile */
+  .experience-card, 
+  .experience-item,
+  [class*="experience"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: left !important; /* Keep bullet points readable */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1rem !important;
+  }
+
+  /* Force all experience certificate/badge images to scale properly within screen bounds */
+  .experience-card img,
+  .experience-certificate-img,
+  [class*="experience"] img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    margin: 0.5rem auto !important;
+    display: block !important;
+  }
 }
