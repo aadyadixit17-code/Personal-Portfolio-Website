@@ -831,38 +831,31 @@ section:hover .heading-bounce {
     padding: 0.5rem 0.8rem !important;
   }
 /* ==========================================================================
-   FORCE OVERRIDE: Experience Section & Certificate Images on Mobile
+   ULTIMATE MOBILE IMAGE & CARD CRUSH (Overrides all other rules)
    ========================================================================== */
 @media screen and (max-width: 768px) {
-  /* Target the container wrapping the experience card/certificate */
-  .experience-section,
-  .experience-container,
-  div[class*="experience"],
-  section[class*="experience"] {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    width: 100% !important;
+  /* Target any container inside the experience section */
+  section#experience *, 
+  .experience-section *, 
+  [class*="experience"] * {
     max-width: 100% !important;
-    padding: 0.5rem !important;
-    margin: 0 auto !important;
     box-sizing: border-box !important;
-    overflow: hidden !important;
   }
 
-  /* Force every certificate image inside experience to scale cleanly */
-  .experience-section img,
-  .experience-container img,
-  div[class*="experience"] img,
-  section[class*="experience"] img {
+  /* Force every image inside the experience section to fit the mobile screen */
+  section#experience img, 
+  .experience-section img, 
+  [class*="experience"] img {
     width: 100% !important;
-    max-width: 100% !important;
     height: auto !important;
+    max-height: 300px !important; /* Prevents certificate from taking up the whole phone screen */
     object-fit: contain !important;
-    display: block !important;
     margin: 10px auto !important;
+    display: block !important;
   }
 }
 
 
-  }
+
+
+ }
